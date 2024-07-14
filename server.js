@@ -89,6 +89,44 @@ router.post("/create-one-person", function (req, res, next) {
   });
 });
 
+const createOnePet = require("./myApp.js").createOnePet;
+router.post("/create-one-pet", function (req, res, next) {
+  createOnePet(req.body, function (err, data) {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return next({ message: "Missing callback argument" });
+    }
+    res.json(data);
+  });
+});
+
+const createOneDolarVES = require("./myApp.js").createOneDolarVES;
+router.post("/create-one-dolarVES", function (req, res, next) {
+  createOneDolarVES(req.body, function (err, data) {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return next({ message: "Missing callback argument" });
+    }
+    res.json(data);
+  });
+});
+const createOneDolarARS = require("./myApp.js").createOneDolarARS;
+router.post("/create-one-dolarARS", function (req, res, next) {
+  createOneDolarARS(req.body, function (err, data) {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return next({ message: "Missing callback argument" });
+    }
+    res.json(data);
+  });
+});
+
 const createPerson = require("./myApp.js").createAndSavePerson;
 router.get("/create-and-save-person", function (req, res, next) {
   // in case of incorrect function use wait timeout then respond

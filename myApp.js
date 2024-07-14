@@ -31,8 +31,40 @@ const personSchema = new mongoose.Schema({
     },
   ],
 });
+// Define el esquema para Pet
+const petSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  }, 
+  age: {
+    type: Number    
+  },
+});
+// Define el esquema para Dolar
+const dolarSchema = new mongoose.Schema({
+  fecha: {
+    type: Date
+  }, 
+  dolarYadio: {
+    type: Number    
+  },
+});
 
 let Person = mongoose.model("Person", personSchema);
+let Pet = mongoose.model("Pet", petSchema);
+let DolarVES = mongoose.model("DolarVES", dolarSchema);
+let DolarARS = mongoose.model("DolarARS", dolarSchema);
+
+
+const createOnePerson = (personData, done) => {
+  Person.create(personData, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
+};
 
 const createAndSavePerson = (done) => {
   let person = new Person({ name: "Jane Fonda", age: 84 });
@@ -42,8 +74,26 @@ const createAndSavePerson = (done) => {
   });
 };
 
-const createOnePerson = (personData, done) => {
-  Person.create(personData, (err, data) => {
+// Función para crear una nueva mascota
+const createOnePet = (petData, done) => {
+  Pet.create(petData, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
+};
+// Función para crear una nuevo registro de dolarVES
+const createOneDolarVES = (dolarData, done) => {
+  DolarVES.create(dolarData, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
+};
+const createOneDolarARS = (dolarData, done) => {
+  DolarARS.create(dolarData, (err, data) => {
     if (err) {
       return done(err);
     }
@@ -142,8 +192,8 @@ const queryChain = (done) => {
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
 exports.PersonModel = Person;
-exports.createAndSavePerson = createAndSavePerson;
 exports.createOnePerson = createOnePerson;
+exports.createAndSavePerson = createAndSavePerson;
 exports.findPeopleByName = findPeopleByName;
 exports.findPersonById = findPersonById;
 exports.findEditThenSave = findEditThenSave;
@@ -152,3 +202,12 @@ exports.createManyPeople = createManyPeople;
 exports.removeById = removeById;
 exports.removeManyPeople = removeManyPeople;
 exports.queryChain = queryChain;
+
+
+// Exporta el modelo y la función
+exports.PetModel = Pet;
+exports.createOnePet = createOnePet;
+exports.PetModel = DolarVES;
+exports.createOneDolarVES = createOneDolarVES;
+exports.PetModel = DolarARS;
+exports.createOneDolarARS = createOneDolarARS;
