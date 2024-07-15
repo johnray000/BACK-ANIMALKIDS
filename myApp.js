@@ -2,7 +2,6 @@ let mongoose = require("mongoose");
 require("dotenv").config();
 
 //conexion con confirmacion positiva solamente
-
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -19,6 +18,10 @@ const personSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
   },
   phone: {
     type: String,
