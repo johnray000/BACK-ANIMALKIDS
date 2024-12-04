@@ -1,0 +1,13 @@
+* Ir cambiando mi .json a la BD en mongo
+  - Usar back para aprender y practicar
+  - Usar railway hasta q se acabe el tier gratis
+  - Igual la idea es practicar el manejo de datos y el peo
+* Averiguar como hacer los fech a puro front 
+  - es decir solo github haga la lectura y la escritur en MONGO
+* Probar Usar los datos desde el endpoint
+* Probar escribir datos que traiga de dolarYadio y criptoya
+* Agregar dolar Oficial a los models
+
+###READY
+* Crear schemas y model para usar dolar desde el mismo back
+* Probar escribir algunos
